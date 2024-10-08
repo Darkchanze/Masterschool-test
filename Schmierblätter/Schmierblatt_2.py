@@ -1,8 +1,7 @@
-list1 = [8, 3, 4, 5, 6, 7, 9]
+from typing import assert_never
 
-total = 0
+x = {"apple", "banana", "cherry", "appsle", "bandana", "cherary", "appale", "bananwa", "cheerry", "appsle", "bandana",
+     "chearry", "apaple", "banasna", "apple", "banana", "cherry", "cdherry"}
+y = {"google", "microsoft", "apple"}
+g = {"google", "microsoft", "cherry"
 
-
-for item in list1:
-    total = total + item
-print(total)
