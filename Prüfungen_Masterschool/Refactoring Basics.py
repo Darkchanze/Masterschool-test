@@ -11,8 +11,10 @@ def input_of_number():
 
 def is_sum_of_two_primes(check_sum_prime):
     """Checking which summation of 2 prime numbers will result in check_sum_prime"""
+    set_of_used_numbers = set()
+    list_of_prime_pairs = []
     if check_sum_prime % 2 == 1:
-        return False
+        return
     for check_if_first_prime in range(2, check_sum_prime):
         first_number_is_prime = True
         # Check if check_if_second_prime is Prime
@@ -34,12 +36,17 @@ def is_sum_of_two_primes(check_sum_prime):
                     smaller_numbers += 1
                 if second_number_is_prime:
                     # Both numbers are Prime, now we Print them.
-                    print(f"The number {check_sum_prime} equals to the sum of {check_if_first_prime} and {check_if_second_prime}")
-    return True
+                    if (check_if_second_prime not in set_of_used_numbers):
+                        list_of_prime_pairs.append((check_if_first_prime, check_if_second_prime))
+                        set_of_used_numbers.add(check_if_first_prime)
+    return list_of_prime_pairs
 
 
 def main():
-    is_sum_of_two_primes(input_of_number())
+    number_user_input = input_of_number()
+    list_of_prime_pairs = is_sum_of_two_primes(number_user_input)
+    for pair in list_of_prime_pairs:
+        print(f"The number {number_user_input} equals to the sum of {pair[0]} and {pair[1]}")
 
 
 if __name__ == "__main__":
