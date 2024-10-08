@@ -5,24 +5,24 @@ def is_divisible_by(number, by):
     else:
         return False
 
+
 # Checking if a number is Prime.
 def is_prime(number):
     count = 0
     for i in range(2, number):
         if is_divisible_by(number, i):
             count += 1  # If number is divisible by another number but itself and 1 this counter goes 1 up.
-    if count > 0: # If this counter got bigger than 0 the number is no prime
+    if count > 0:  # If this counter got bigger than 0 the number is no prime
         return False
     else:
-        return True #Number is Prime
+        return True  #Number is Prime
+
 
 #Checking if a given range of numbers is Prime.
 def primes_in_range(start, end):
     for i in range(start, end):
-        if is_prime(i): #Checking if each number is Prime with the function 'is_prime'.
+        if is_prime(i):  #Checking if each number is Prime with the function 'is_prime'.
             print(f'The number {i} is prime')
-
-
 
 
 # Main: Program sequence

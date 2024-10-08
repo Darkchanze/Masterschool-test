@@ -3,28 +3,32 @@ def calculate(text_input):
     # '+' Addition Calculation:
     if '+' in text_input:
         string_list = text_input.split('+')
-        return int(string_list[0]) + int(string_list[1])
+        return int(string_list[0]) + int(string_list[1])#
+
 
     # '-' Subtraction Calculation:
     if '-' in text_input:
         string_list = text_input.split('-')
         return int(string_list[0]) - int(string_list[1])
 
+
     # '/' Division Calculation:
     if '/' in text_input:
         string_list = text_input.split('/')
         return int(string_list[0]) / int(string_list[1])
+
 
     # '*' Multiplication Calculation:
     if '*' in text_input:
         string_list = text_input.split('*')
         return int(string_list[0]) * int(string_list[1])
 
+
     # '*' Reminder Division Calculation:
     if '~' in text_input:
         string_list = text_input.split('~')
-        return int(string_list[0]) // int(string_list[1]), int(string_list[0]) % int(string_list[1]) # Returns type tuple.
-
+        return int(string_list[0]) // int(string_list[1]), int(string_list[0]) % int(
+            string_list[1])  # Returns type tuple.
 
 
 print("Welcome to the Python calculator!")
@@ -41,8 +45,3 @@ for cal in range(int(amount_calculations)):
         print(f"The reminder is {result[1]}")
     else:
         print(f"The answer is {result}")
-
-
-
-
-
