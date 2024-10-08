@@ -1,4 +1,4 @@
-# Jumps into the Operator of the added user input and Calculates it.
+# Jumps into the Operator of the added user input and Calculates it
 def calculate(text_input):
     # '+' Addition Calculation:
     if '+' in text_input:

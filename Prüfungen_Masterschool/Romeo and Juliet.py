@@ -32,12 +32,12 @@ def top_n_words(freq, n):
         most_used_word = ''
         count_most_used_word = 0
         for current_word, current_count in freq.items():
-            if current_count > count_most_used_word:  # Check if current_word is more used than most_used_word, if its bigger replace with bigger counter and word.
+            if current_count > count_most_used_word:  # Check if current_word is more used than most_used_word, if its bigger replace with bigger counter and word
                 count_most_used_word = current_count
                 most_used_word = current_word
         print(f'{most_used_word}: {count_most_used_word}')
         freq.pop(
-            most_used_word)  #Deletes the most used word out of 'freq' to search for the next most used word under it at next iteration.
+            most_used_word)  #Deletes the most used word out of 'freq' to search for the next most used word under it at next iteration
 
 
 def main():

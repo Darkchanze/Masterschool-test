@@ -18,7 +18,7 @@ def is_prime(number):
         return True  #Number is Prime
 
 
-#Checking if a given range of numbers is Prime.
+#Checking if a given range of numbers is Prime
 def primes_in_range(start, end):
     for i in range(start, end):
         if is_prime(i):  #Checking if each number is Prime with the function 'is_prime'.

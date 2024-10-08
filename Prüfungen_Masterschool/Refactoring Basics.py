@@ -35,7 +35,7 @@ def is_sum_of_two_primes(check_sum_prime):
                         second_number_is_prime = False
                     smaller_numbers += 1
                 if second_number_is_prime:
-                    # Both numbers are Prime, now we Print them.
+                    # Both numbers are Prime, now we Print them
                     if (check_if_second_prime not in set_of_used_numbers):
                         list_of_prime_pairs.append((check_if_first_prime, check_if_second_prime))
                         set_of_used_numbers.add(check_if_first_prime)
