@@ -8,6 +8,16 @@ def input_of_number():
         else:
             print('Input is invalid, only whole numbers and no letters')
 
+def check_number_prime(check_if_prime):
+    """Checking  if a number is Prime and return true or False"""
+    number_is_prime = True
+    smaller_numbers = 2
+    while smaller_numbers < check_if_prime:
+        if check_if_prime % smaller_numbers == 0:
+            number_is_prime = False
+        smaller_numbers += 1
+    return number_is_prime
+
 
 def is_sum_of_two_primes(check_sum_prime):
     """Checking which summation of 2 prime numbers will result in check_sum_prime"""
@@ -16,28 +26,14 @@ def is_sum_of_two_primes(check_sum_prime):
     if check_sum_prime % 2 == 1:
         return
     for check_if_first_prime in range(2, check_sum_prime):
-        first_number_is_prime = True
-        # Check if check_if_second_prime is Prime
-        smaller_numbers = 2
-        while smaller_numbers < check_if_first_prime:
-            if check_if_first_prime % smaller_numbers == 0:
-                first_number_is_prime = False
-            smaller_numbers += 1
-        if first_number_is_prime:
+        if check_number_prime(check_if_first_prime):
             # check_if_first_prime is prime
-            # Check if check_if_second_prime is Prime
             check_if_second_prime = check_sum_prime - check_if_first_prime
             if check_if_second_prime >= 2:
-                second_number_is_prime = True
-                smaller_numbers = 2
-                while smaller_numbers < check_if_second_prime:
-                    if check_if_second_prime % smaller_numbers == 0:
-                        second_number_is_prime = False
-                    smaller_numbers += 1
-                if second_number_is_prime:
+                if check_number_prime(check_if_second_prime):
                     # Both numbers are Prime, now we Print them
-                    if (check_if_second_prime not in set_of_used_numbers):
-                        list_of_prime_pairs.append((check_if_first_prime, check_if_second_prime))
+                    if (check_if_second_prime not in set_of_used_numbers):  #Check if we already have that numbers in our list
+                        list_of_prime_pairs.append((check_if_first_prime, check_if_second_prime)) #Numbers are new, so we add them in a touple to our list
                         set_of_used_numbers.add(check_if_first_prime)
     return list_of_prime_pairs
 
