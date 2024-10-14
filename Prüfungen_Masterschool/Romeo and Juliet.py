@@ -1,17 +1,10 @@
 from romeo_and_juliet import PLAY
-
+import re
 
 def get_words(text):
-    """Splits a text into a list of words sets the word into lowercase and removes all none alphabetic letters"""
-    list_of_all_words = text.split(' ')
-    list_of_all_words_lowercase_and_without_non_alphabetic_characters = []
-    for word in list_of_all_words:
-        alphabetic_word = ''
-        for char in word:
-            if char.isalnum():
-                alphabetic_word += char
-        list_of_all_words_lowercase_and_without_non_alphabetic_characters.append(alphabetic_word.lower())
-    return list_of_all_words_lowercase_and_without_non_alphabetic_characters
+    """Sets the text into lower case and puts single words into a list"""
+    text = text.lower()
+    return re.findall('[a-z]+', text)
 
 
 def words_frequency(words):
@@ -36,8 +29,7 @@ def top_n_words(freq, n):
                 count_most_used_word = current_count
                 most_used_word = current_word
         print(f'{most_used_word}: {count_most_used_word}')
-        freq.pop(
-            most_used_word)  #Deletes the most used word out of 'freq' to search for the next most used word under it at next iteration
+        freq.pop( most_used_word)  #Deletes the most used word out of 'freq' to search for the next most used word under it at next iteration
 
 
 def main():
@@ -48,3 +40,18 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+#Old solution reworked but still not precice enough
+"""def get_words(text):
+    text = text.lower()
+    list_of_all_words = text.split()
+    list_of_all_words_lowercase_and_without_non_alphabetic_characters = []
+    for word in list_of_all_words:
+        alphabetic_word = ''
+        for char in word:
+            if char.isalpha():
+                alphabetic_word += char
+        if alphabetic_word != '':
+            list_of_all_words_lowercase_and_without_non_alphabetic_characters.append(alphabetic_word)
+    return list_of_all_words_lowercase_and_without_non_alphabetic_characters"""
