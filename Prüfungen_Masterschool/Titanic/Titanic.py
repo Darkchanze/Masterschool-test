@@ -1,26 +1,43 @@
 from load_data import load_data
 
 
-def help(all_data):
-    """Prints a list of available commands and executes the function for it."""
+def list_help():
     print("Available commands:")
     print("1. 'help' - Prints a list of all commands.")
     print("2. 'show countries' - Prints list of all countries of the ships without duplicates in alphabetical order.")
-    print("3. 'top countries' - Prints a list of top countries with the most ships.")
-    print("4. 'ships by type' - Prints a list of top ship types.")
+    print("3. 'top countries <num_countries>' - Prints a list of top countries with the most ships.")
+    print("4. 'ships by type <num_ship_types>' - Prints a list of top ship types.")
     print("5. 'search ship' - Prints all the ships with similar names respective to the search.")
 
-    command = input('Enter a command:')
+def get_command(all_data):
+    """Prints a list of available commands and executes the function for it."""
+    command = input('')
     commands = {
-        'help': help,
+        'help': list_help,
         'show countries': show_countries,
         'top countries': top_countries,
         'ships by type' : ships_by_type,
         'search ship' : search_ship
     }
+    requires_all_data = ['show countries', 'search ship']
+
 
     if command in commands:
-        commands[command](all_data)
+        if command in requires_all_data:
+            commands[command](all_data)
+        else:
+            splitted_command = command.split(' ')
+            if len(splitted_command) == 3:
+                if splitted_command[0] == 'top' and splitted_command[1] == 'countries' and splitted_command[2].isdigit():
+                    count_top = splitted_command[2]
+                    commands[command](all_data, count_top)
+                elif splitted_command[0] == 'ships' and splitted_command[1] == 'by'and splitted_command[2] == 'type' and splitted_command[3].isdigit():
+                    count_top = int(splitted_command[3])
+                    commands[command](all_data, count_top)
+            else:
+                commands[command]()
+    else:
+        print(f'Unknown command {command}')
 
 
 def count_search_type_appearances(all_data, search_type):
@@ -46,16 +63,6 @@ def show_countries(all_data):
         print(country)
 
 
-def get_input_top_countries(topic):
-    """Returns the length of the top list input from the user and handels exceptions"""
-    while True:
-        try:
-            count_top = int(input(f'Enter a number to set the count of the top {topic}:'))
-            return count_top
-        except ValueError:
-            print('Please enter a number and not letters')
-
-
 def print_top_search_type(input_top_length, count_key):
     """Prints the keys and values of a dict in order from biggest value to smallest """
     dict_of_top_key = {}
@@ -72,16 +79,14 @@ def print_top_search_type(input_top_length, count_key):
         print(f'{i}. {key}: {value}')
 
 
-def top_countries(all_data):
+def top_countries(all_data, count_top):
     """Gets function print_top_search_type to print top countries"""
-    count_top = get_input_top_countries('countrys')
     count_countrys = count_search_type_appearances(all_data, 'COUNTRY')
     print_top_search_type(count_top, count_countrys)
 
 
-def ships_by_type(all_data):
+def ships_by_type(all_data, count_top):
     """Gets function print_top_search_type to print top ships by type"""
-    count_top = get_input_top_countries('ship types')
     count_ship_types = count_search_type_appearances(all_data, 'TYPE_SUMMARY')
     print_top_search_type(count_top, count_ship_types)
 
@@ -101,11 +106,8 @@ def speed_histogram():
 
 def main():
     all_data = load_data()
-    #while True:
-     #   help(all_data)
-    if __name__ == '__main__':
-        if __name__ == '__main__':
-
+    while True:
+       get_command(all_data)
 
 
 if __name__ == "__main__":
