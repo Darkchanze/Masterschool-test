@@ -1,17 +1,14 @@
-import datetime
+command_input = 'Hello my guest'
 
-def which_day(day, month, year):
-    date_obj = datetime.date(year, month, day)
-    return date_obj.strftime('%A')
+splitted_command = command_input.split()
+print(splitted_command)
+if len(splitted_command) == 0:
+    print("No command entered.")
 
-def safe_which_day(day, month, year):
-    try:
-        return which_day(day, month, year)
-    except:
-        print('Error!')
-    finally:
-        print('')
 
-print(safe_which_day(31, 31, 2000))
-
-program_survived = True
+# Extrahiere den Befehl (erste Teile) und ggf. Argumente (restliche Teile)
+base_command = ' '.join(splitted_command[:2])  # Erster und zweiter Teil des Befehls
+args = splitted_command[2:]  # Alle weiteren Teile als Argumente
+print(splitted_command)
+print(base_command)
+print(args)
