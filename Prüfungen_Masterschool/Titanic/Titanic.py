@@ -144,6 +144,7 @@ def draw_map(all_data):
 
 
 def main():
+    print("Welcome to the Ships CLI! Enter 'help' to view available commands.")
     all_data = load_data()
     while True:
        get_command(all_data)
@@ -151,4 +152,3 @@ def main():
 
 if __name__ == "__main__":
         main()
-
